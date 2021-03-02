@@ -12,7 +12,7 @@ class Admin extends Model
     protected $fillable = [
         'nama',
         'alamat', 
-        'jenis-kelamin', 
+        'jenis_kelamin', 
         'hobi',
         'agama'
     ];
