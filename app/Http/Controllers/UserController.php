@@ -25,7 +25,15 @@ class UserController extends Controller
                 $message = "Berhasil Menambah siswa";
                 $response_status = 200;
                 $data = $save;
-                return response()->json(
+                
+        }catch(Exception $error){
+                $isSuccess = false;
+                $message = $error;
+                $response_status = 404;
+                $data = null;
+        }
+
+        return response()->json(
                     [
                         'isSuccess' => $isSuccess,
                         'status' => $response_status,
@@ -33,12 +41,6 @@ class UserController extends Controller
                         'data' => $data
 
                     ], 200);
-        }catch(Exception $error){
-                $isSuccess = false;
-                $message = $error;
-                $response_status = 404;
-                $data = null;
-        }
         // $input = $request ->all();
         // $save = User1::create($input)->save();
 
@@ -62,6 +64,42 @@ class UserController extends Controller
         //                 'data' => $data
 
         //             ], 200);
+    }
+    public function updateUser(Request $request) 
+    {
+        $input = User1::find($request->id);
+        if (!empty($input)) {
+            $nama = $request->nama;
+            $alamat = $request->alamat;
+            $jeniskelamin = $request->jenis_kelamin;
+            $hobi = $request->hobi;
+            $agama = $request->agama;
+
+            try {
+                $update = $input->update([
+                    'nama'=> $nama,
+                    'alamat' => $alamat,
+                    'jenis_kelamin' => $jeniskelamin,
+                    'hobi' => $hobi,
+                    'agama' => $agama
+                ]);
+
+                if ($update) {
+                    $isSuccess = true;
+                    $message = "Data User telah diperbarui";
+                    $input = User1::find($input->id);
+                }
+
+            } catch (\Exception $e) {
+                $errorcode = $e->getMessage();
+                    $isSuccess = false;
+                    $message = $errorCode;
+                    $input = null;
+            }
+
+            return response()->json(compact('isSuccess',  'message', 'input'));
+        }
+        
     }
 
 
