@@ -22,7 +22,7 @@ class UserController extends Controller
                 $input = $request ->all();
                 $save = User1::create($input)->save();
                 $isSuccess = true;
-                $message = "Berhasil Menambah siswa";
+                $message = "Berhasil Menambah user";
                 $response_status = 200;
                 $data = $save;
                 
@@ -101,6 +101,22 @@ class UserController extends Controller
         }
         
     }
+
+    public function getUser(Request $request)
+    {
+        $data = User1::orderBy('id', 'DESC')->get();
+        $isSuccess = true;
+        $response_status = 200;
+        $message = "Berhasil mendapat User";
+
+        if(empty($data)){
+            $isSuccess = false;
+            $response_status = 404;
+            $message = "Tidak ada data untuk ditampilkan !";
+        }
+        return response()->json(compact('isSuccess', 'response_status', 'message', 'data'));
+    }
+    
 
 
 }
