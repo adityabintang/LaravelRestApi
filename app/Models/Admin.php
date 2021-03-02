@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
-    use HasFactory;
+    protected $table = "admin";
+    protected $primaryKey = "id";
+    protected $fillable = [
+        'nama',
+        'alamat', 
+        'jenis-kelamin', 
+        'hobi',
+        'agama'
+    ];
+    protected $hidden = ['created_at', 'updated_at'];
 }
