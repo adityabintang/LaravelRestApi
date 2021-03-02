@@ -116,7 +116,10 @@ class UserController extends Controller
         }
         return response()->json(compact('isSuccess', 'response_status', 'message', 'data'));
     }
-    
+    public function deleteUser(Request $request)
+    {
+        
+    }
 
 
 }
