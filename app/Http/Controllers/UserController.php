@@ -20,7 +20,7 @@ class UserController extends Controller
                 'agama' => ["required","String", "max:255"],
             ]);
                 $input = $request ->all();
-                $save = User1::create($input)->save();
+                $save = Admin::create($input)->save();
                 $isSuccess = true;
                 $message = "Berhasil Menambah user";
                 $response_status = 200;
@@ -67,7 +67,7 @@ class UserController extends Controller
     }
     public function updateUser(Request $request) 
     {
-        $input = User1::find($request->id);
+        $input = Admin::find($request->id);
         if (!empty($input)) {
             $nama = $request->nama;
             $alamat = $request->alamat;
@@ -87,7 +87,7 @@ class UserController extends Controller
                 if ($update) {
                     $isSuccess = true;
                     $message = "Data User telah diperbarui";
-                    $input = User1::find($input->id);
+                    $input = Admin::find($input->id);
                 }
 
             } catch (\Exception $e) {
@@ -104,7 +104,7 @@ class UserController extends Controller
 
     public function getUser(Request $request)
     {
-        $data = User1::orderBy('id', 'DESC')->get();
+        $data = Admin::orderBy('id', 'DESC')->get();
         $isSuccess = true;
         $response_status = 200;
         $message = "Berhasil mendapat User";
