@@ -118,7 +118,18 @@ class UserController extends Controller
     }
     public function deleteUser(Request $request)
     {
-        
+        $data = Admin::where('id', $request->id)->delete();
+        if ($data) {
+            $isSuccess = true;
+            $message = "Berhasil dihapus";
+            $response_status = 200;
+        }
+        else {
+            $isSuccess = false;
+            $message = "Gagal dihapus";
+            $response_status = 404;
+        }
+        return response()->json(compact('isSuccess', 'message', 'response_status'));
     }
 
 
