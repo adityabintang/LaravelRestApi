@@ -25,6 +25,7 @@ Route::any('deleteSiswa', "App\Http\Controllers\ApiSiswa@deleteSiswa");
 Route::any('editSiswa/{id}', "App\Http\Controllers\ApiSiswa@editSiswa");
 
 Route::any('tambahUser', "App\Http\Controllers\UserController@tambahUser");
+Route::any('updateUser', "App\Http\Controllers\UserController@updateUser");
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $requany>user();
 });
