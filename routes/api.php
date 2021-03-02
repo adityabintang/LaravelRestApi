@@ -23,6 +23,8 @@ Route::any('getSiswa', "App\Http\Controllers\ApiSiswa@getSiswa");
 Route::any('searchSiswa', "App\Http\Controllers\ApiSiswa@searchSiswa");
 Route::any('deleteSiswa', "App\Http\Controllers\ApiSiswa@deleteSiswa");
 Route::any('editSiswa/{id}', "App\Http\Controllers\ApiSiswa@editSiswa");
+
+Route::any('tambahUser', "App\Http\Controllers\UserController@tambahUser");
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $requany>user();
 });
