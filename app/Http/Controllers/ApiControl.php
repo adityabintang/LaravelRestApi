@@ -47,9 +47,6 @@ class ApiControl extends Controller
             $response_status = 404;
             $data = null;
             }
-
-            
-
             return response()->json(
                     [
                         'isSuccess' => $isSuccess,
