@@ -24,12 +24,12 @@ class ApiSiswa extends Controller
                 $data = $save;
         }else {
                 $isSuccess = false;
-                $message = "Berhasil Menambah siswa";
+                $message = "Gagal Menambah Siswa";
                 $response_status = 404;
                 $data = null;
         }
 
-         return response()->json(
+        return response()->json(
                     [
                         'isSuccess' => $isSuccess,
                         'status' => $response_status,
